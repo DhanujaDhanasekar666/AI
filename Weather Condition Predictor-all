@@ -1,0 +1,24 @@
+% Facts
+symptom(chennai, humid).
+symptom(chennai, cloudy).
+symptom(delhi, sunny).
+symptom(delhi, dry).
+symptom(ooty, cold).
+symptom(ooty, foggy).
+% Rules
+hypothesis(chennai, rainy) :-
+    symptom(chennai, humid),
+    symptom(chennai, cloudy).
+hypothesis(delhi, clear) :-
+    symptom(delhi, sunny),
+    symptom(delhi, dry).
+hypothesis(ooty, foggy_weather) :-
+    symptom(ooty, cold),
+    symptom(ooty, foggy).
+% Initialization
+:- initialization(main).
+main :-
+    hypothesis(Location, Weather),
+    write(Location), write(' weather is '), write(Weather), nl,
+    fail.
+main.
