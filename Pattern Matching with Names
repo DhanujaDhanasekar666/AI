@@ -1,0 +1,18 @@
+% First names
+first_name(tonyblair, tony).
+first_name(georgebush, georgedubya).
+
+% Second names
+second_name(tonyblair, blair).
+second_name(georgebush, bush).
+
+% Initialization to display all full names
+:- initialization(display_full_names).
+
+display_full_names :-
+    write('Listing full names (first and second):'), nl,
+    first_name(Person, First),
+    second_name(Person, Second),
+    write(Person), write(': '), write(First), write(' '), write(Second), nl,
+    fail.
+display_full_names.
