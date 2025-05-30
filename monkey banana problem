@@ -1,0 +1,16 @@
+% Facts 
+at(monkey, floor). 
+at(banana, ceiling). 
+has(monkey, nothing). 
+move(box, under_banana).
+% Rules 
+can_reach(monkey) :-
+  at(monkey, floor), 
+  move(box, under_banana), 
+  climb(box),
+  grab(banana).
+climb(box) :-
+  write('Monkey climbs the box'), nl.
+grab(banana) :-
+  write( 'Monkey grabs the banana!'), nl. 
+  :- initialization(can_reach(monkey)).
