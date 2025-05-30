@@ -1,0 +1,21 @@
+% Fact as atom (not string)
+sentence('I am an brilliant student in Saveetha University').
+% Vowel definitions (as atoms)
+vowel('a'). vowel('e'). vowel('i'). vowel('o'). vowel('u').
+vowel('A'). vowel('E'). vowel('I'). vowel('O'). vowel('U').
+% Count vowels recursively
+count_vowels([], 0).
+count_vowels([H|T], Count) :-
+    vowel(H), !,
+    count_vowels(T, Rest),
+    Count is Rest + 1.
+count_vowels([_|T], Count) :-
+    count_vowels(T, Count).
+% Main logic
+main :-
+    sentence(S),
+    atom_chars(S, Chars),        % Converts atom to character list
+    count_vowels(Chars, Count),
+    write('Number of vowels: '), write(Count), nl.
+% Initialization directive
+:- initialization(main).
