@@ -1,0 +1,21 @@
+% Facts
+problem(car1, engine_noise).
+problem(car1, oil_leak).
+problem(car2, battery_low).
+problem(car2, slow_start).
+problem(car3, flat_tire).
+% Rules
+diagnosis(car1, engine_failure) :-
+    problem(car1, engine_noise),
+    problem(car1, oil_leak):-
+diagnosis(car2, battery_issue) :-
+    problem(car2, battery_low),
+    problem(car2, slow_start).
+diagnosis(car3, tire_puncture) :-
+    problem(car3, flat_tire).
+% Main
+:- initialization(main).
+main :-
+    diagnosis(car1, F1), write('Car1 fault: '), write(F1), nl,
+    diagnosis(car2, F2), write('Car2 fault: '), write(F2), nl,
+    diagnosis(car3, F3), write('Car3 fault: '), write(F3), nl.
