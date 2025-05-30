@@ -1,0 +1,24 @@
+% Sample knowledge base
+fact(rains).
+fact(cloudy).
+fact(wet_ground).
+
+% Rule definitions
+rule(wet_ground, (rains, cloudy)).
+
+% Inference engine
+interpret(true) :- !.
+
+interpret((GoalA, GoalB)) :- !,
+    interpret(GoalA),
+    interpret(GoalB).
+
+interpret(Goal) :-
+    fact(Goal), !.
+
+interpret(Goal) :-
+    rule(Goal, SubGoals),
+    interpret(SubGoals).
+
+% Example query:
+% ?- interpret(wet_ground).
