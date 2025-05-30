@@ -1,0 +1,23 @@
+% Facts 
+lucky(john).
+not_studies(john).
+% Rules 
+% A person passes all exams if they study or are lucky
+passes_all_exams(X) :- studies(X).
+passes_all_exams(X) :- lucky(X).
+% Passing all exams implies passing history
+passes_history(X) :- passes_all_exams(X).
+% A lucky person wins the lottery
+wins_lottery(X) :- lucky(X).
+% A person is happy if they pass history and win the lottery
+happy(X) :- passes_history(X), wins_lottery(X).
+% Simulate negation: studies(X) is true if not not_studies(X)
+studies(X) :- \+ not_studies(X).
+%  Main Execution 
+:- initialization(main).
+main :-
+    ( happy(john) ->
+        write('John is happy!'), nl
+    ;
+        write('John is not happy.'), nl
+    ).
