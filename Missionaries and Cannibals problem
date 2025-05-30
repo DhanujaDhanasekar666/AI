@@ -1,0 +1,32 @@
+from collections import deque
+def is_safe(m, c):
+    return (m == 0 or m >= c) and (3 - m == 0 or 3 - m >= 3 - c)
+def successors(m, c, side):
+    moves = [(1, 0), (2, 0), (0, 1), (0, 2), (1, 1)]
+    for dm, dc in moves:
+        if side == 'left':
+            new_m, new_c = m - dm, c - dc
+            new_side = 'right'
+        else:
+            new_m, new_c = m + dm, c + dc
+            new_side = 'left'
+        if 0 <= new_m <= 3 and 0 <= new_c <= 3 and is_safe(new_m, new_c):
+            yield (new_m, new_c, new_side)
+def solve():
+    start = (3, 3, 'left')
+    goal  = (0, 0, 'right')
+    visited = set()
+    queue = deque([(start, [start])])
+    while queue:
+        (m, c, side), path = queue.popleft()
+        if (m, c, side) in visited:
+            continue
+        visited.add((m, c, side))
+        if (m, c, side) == goal:
+            for step in path:
+                print(step)
+            return
+        for succ in successors(m, c, side):
+            queue.append((succ, path + [succ]))
+if __name__ == "__main__":
+    solve()
