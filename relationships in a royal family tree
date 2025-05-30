@@ -1,0 +1,23 @@
+% Facts 
+king(george_v). 
+queen(elizabeth).
+prince(charles).
+prince(william). 
+princess(diana).
+parent(george_v, elizabeth). 
+parent(elizabeth, charles). 
+parent(charles, william).
+spouse(charles, diana). 
+spouse(william, kate).
+% Rules
+grandparent(X, Z) :- parent(X, Y), parent(Y, Z).
+child(X, Y) :- parent(Y, X).
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+% Main
+:- initialization(main2).
+main2 :-
+    write('Grandparents of William:'), nl,
+    grandparent(GP, william),
+    write('- '), write(GP), nl,
+    fail.
+main2.
