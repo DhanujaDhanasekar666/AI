@@ -1,0 +1,12 @@
+% Facts
+stole(alice, painting).
+stealing_is_crime.
+% Rule: If someone stole something and stealing is a crime, they are a criminal 
+criminal(x) :- stole(x, _), stealing_is_crime.
+% Output result 
+:- initialization(main).
+main :-
+    (criminal(alice) ->
+      write('Alice is a criminal.');
+      write('Alice is not a criminall.')
+  ), nl.
