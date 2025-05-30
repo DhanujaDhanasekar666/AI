@@ -1,0 +1,16 @@
+% Facts: person(Name, DateOfBirth).
+person(john, '1990-05-10').
+person(mary, '1985-12-20').
+person(alex, '2000-07-01').
+person(sara, '1995-03-15').
+
+% Rule to find a person's DOB by name
+dob(Name, DOB) :- person(Name, DOB).
+
+% Initialization goal
+:- initialization(main).
+
+main :-
+    % Example query: print all persons with DOB
+    forall(person(Name, DOB), format('~w was born on ~w~n', [Name, DOB])),
+    halt.
