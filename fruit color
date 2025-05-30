@@ -1,0 +1,25 @@
+% Facts
+colour(cherry, red).
+colour(banana, yellow).
+colour(apple, red).
+colour(apple, green).
+colour(orange, orange).
+
+% Fallback for unknown fruits
+colour(X, unknown) :-
+    \+ known_fruit(X).
+
+known_fruit(cherry).
+known_fruit(banana).
+known_fruit(apple).
+known_fruit(orange).
+
+% Initialization to list all fruit-color pairs
+:- initialization(list_colours).
+
+list_colours :-
+    write('Listing fruit-color combinations:'), nl,
+    colour(Fruit, Colour),
+    write(Fruit), write(' -> '), write(Colour), nl,
+    fail.
+list_colours.
