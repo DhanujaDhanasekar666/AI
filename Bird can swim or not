@@ -1,0 +1,10 @@
+% Facts
+bird(eagle). bird(sparrow). bird(penguin). bird(duck). 
+swim(penguin). swim(duck).
+% Rule
+fly(x) :- bird(x), \+ swim(x).
+% Main
+:- initialization(main). 
+main :-
+    (swim(penguin) -> write('Penguin can swim'), nl ; write('Penguin cannot swim'), nl), 
+    (fly(eagle) -> write('Eagle can fly'), nl ; write('Eagle cannot fly'), nl).
