@@ -1,0 +1,10 @@
+feature(rose, flowering). 
+feature(rose, thorny). 
+feature(cactus, succulent).
+feature(mango, fruit_bearing).
+feature(mango, woody).
+classify(rose, shrub). 
+classify(cactus, succulent). classify(mango, tree).
+:- initialization(main).
+main :- classify(P, T), write(P), write(': '), write(T), nl, fail.
+main.
