@@ -1,0 +1,16 @@
+% Planetary orbits
+orbits(mercury, sun).
+orbits(venus, sun).
+orbits(earth, sun).
+orbits(mars, sun).
+orbits(moon, earth).
+orbits(phobos, mars).
+orbits(deimos, mars).
+% Initialization directive to list all bodies that orbit the sun
+:- initialization(list_sun_orbits).
+list_sun_orbits :-
+    write('Bodies that orbit the sun:'), nl,
+    orbits(Body, sun),
+    write(Body), nl,
+    fail.
+list_sun_orbits.
