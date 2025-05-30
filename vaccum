@@ -1,0 +1,8 @@
+def vacuum(a, b):
+    if a == 'dirty':
+        print("Clean A")
+    if b == 'dirty':
+        print("Clean B")
+    print("Done")
+
+vacuum('dirty', 'dirty')
