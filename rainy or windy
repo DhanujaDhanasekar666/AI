@@ -1,0 +1,14 @@
+% Facts
+rainy(mumbai). rainy(delhi).
+windy(chennai). cold(delhi).
+% Rules
+carry_umbrella(C) :- rainy(C).
+carry_umbrella(C) :- windy(C).
+wear_warm(C) :- rainy(C), cold(C).
+% Main
+:- initialization(main).
+main :- 
+    carry_umbrella(C), write(C), write(' :- Carry umbrella'), nl, fail.
+main :- 
+    wear_warm(C), write(C), write(' : Wear warm clothes'), nl, fail.
+main.
