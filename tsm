@@ -1,0 +1,16 @@
+from itertools import permutations
+def tsp(g):
+    n = len(g)
+    return min(
+        ([0]+list(p)+[0], sum(g[a][b] for a,b in zip([0]+list(p), list(p)+[0])))
+        for p in permutations(range(1, n))
+    )
+g = [
+    [0,10,15,20],
+    [10,0,35,25],
+    [15,35,0,30],
+    [20,25,30,0]
+]
+path, cost = tsp(g)
+print("Path:", path)
+print("Cost:", cost)
