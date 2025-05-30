@@ -1,0 +1,33 @@
+% Female facts
+female(sarah).
+female(rebekah).
+female(hagar_concubine).
+female(milcah).
+female(bashemath).
+female(mahalath).
+female(first_daughter).
+female(rachel).
+female(labans_wife).
+% Male facts
+male(terah).
+male(abraham).
+male(nahor).
+male(haran).
+male(isaac).
+male(ismael).
+male(uz).
+male(kemuel).
+% Initialization to display all known males and females
+:- initialization(display_family_members).
+display_family_members :-
+    write('Females in the family:'), nl,
+    female(F),
+    write(F), nl,
+    fail.
+display_family_members.
+display_family_members :-
+    write('Males in the family:'), nl,
+    male(M),
+    write(M), nl,
+    fail.
+display_family_members.
