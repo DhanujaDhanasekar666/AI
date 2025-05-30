@@ -1,0 +1,8 @@
+% Facts location(spoon, kitchen). 
+location(tv, hall). 
+location(record, table).
+% Rule to find an item 
+find(Item) :-
+location(Item, Place), write(Item), 
+write(' is in the '), write(Place), nl.
+:- initialization(find(tv)).
