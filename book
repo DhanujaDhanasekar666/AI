@@ -1,0 +1,19 @@
+% Facts
+book_author(the_hobbit, tolkien). 
+book_author(the_fellowship_of_the_ring, tolkien). 
+book_author(harry_potter, rowling).
+book_author(chamber_of_secrets, rowling). 
+book_genre(the_hobbit, fantasy). 
+book_genre(the_fellowship_of_the_ring, fantasy). 
+book_genre(harry_potter, fantasy).
+book_genre(chamber_of_secrets, fantasy) .
+% Main
+:- initialization(main).
+main :-
+    write('Books by Tolkien: '), nl, 
+    book_author(Book, tolkien), 
+    write('- '), write(Book), nl, 
+    fail; nl,
+    write('Genre of the hobbit: '),
+    book_genre(the_hobbit, Genre), 
+    write(Genre), nl.
