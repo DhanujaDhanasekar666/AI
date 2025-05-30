@@ -1,0 +1,23 @@
+% Facts
+attribute(john, hardworking).
+attribute(john, regular).
+attribute(sarah, irregular).
+attribute(sarah, average).
+attribute(mike, hardworking).
+attribute(mike, irregular).
+% Rules
+performance(Student, excellent) :-
+    attribute(Student, hardworking),
+    attribute(Student, regular).
+performance(Student, good) :-
+    attribute(Student, hardworking),
+    attribute(Student, irregular).
+performance(Student, average) :-
+    attribute(Student, average).
+% Initialization
+:- initialization(main).
+main :-
+    performance(Student, Level),
+    write(Student), write(' performance is '), write(Level), nl,
+    fail.
+main.
