@@ -1,0 +1,10 @@
+% Facts 
+man(socrates).
+man(einstein). 
+man(alexander).
+% Rule: All men are mortal
+mortal(X) :- man(X).
+% Initialization: Check that Socrates is mortal
+:- initialization(main).
+main :- 
+    (mortal(socrates) -> write('Socrates is mortal'), nl ; write('Socrates is not mortal'), nl).
