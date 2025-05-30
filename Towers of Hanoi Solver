@@ -1,0 +1,17 @@
+% Move disks from Source to Destination using Auxiliary
+hanoi(1, A, _, C) :-
+    write('Move disk from '), write(A), write(' to '), write(C), nl.
+
+hanoi(N, A, B, C) :-
+    N > 1,
+    N1 is N - 1,
+    hanoi(N1, A, C, B),
+    hanoi(1, A, B, C),
+    hanoi(N1, B, A, C).
+
+% Initialization
+:- initialization(main).
+
+main :-
+    write('Solving Towers of Hanoi for 3 disks:'), nl,
+    hanoi(3, a, b, c).
