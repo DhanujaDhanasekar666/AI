@@ -1,0 +1,18 @@
+% Facts
+type(car, four_wheeler).
+type(bike, two_wheeler).
+type(bus, four_wheeler).
+type(scooter, two_wheeler).
+fuel(car, petrol).
+fuel(bike, petrol).
+fuel(bus, diesel).
+fuel(scooter, petrol).
+% Rule
+vehicle(V, T, F) :- type(V, T), fuel(V, F).
+% Initialization
+:- initialization(start).
+start :-
+    vehicle(V, two_wheeler, petrol),
+    write(V), nl,
+    fail.
+start.
