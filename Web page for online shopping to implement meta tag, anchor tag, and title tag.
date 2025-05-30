@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Online Shopping website">
+    <meta name="keywords" content="shopping, online, ecommerce">
+    <meta name="author" content="Your Name">
+</head> 
+<body>
+    <h1>Welcome to Online Shopping</h1>
+    <p>Click the link below to explore products:</p>
+    <a href="https://www.example.com">Visit Shop</a>
+</body> 
+</html>
