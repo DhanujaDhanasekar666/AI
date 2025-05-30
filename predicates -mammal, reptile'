@@ -1,0 +1,16 @@
+% Facts: Describe features of animals
+has(bird, feathers).
+lays_eggs(bird).
+has(mammal, fur).
+gives_birth(mammal).
+has(reptile, scales).
+lays_eggs(reptile).
+% Rules: Classify based on features
+animal(X) :- has(X, feathers), lays_eggs(X), write('It is a bird'), nl.
+animal(X) :- has(X, fur), gives_birth(X), write('It is a mammal'), nl.
+animal(X) :- has(X, scales), lays_eggs(X), write('It is a reptile'), nl.
+% Main
+:- initialization(main).
+main :-
+    animal(X),
+    write('Animal identified: '), write(X), nl.
