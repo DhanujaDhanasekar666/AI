@@ -1,0 +1,16 @@
+% Facts
+has_feathers(eagle).
+has_feathers(penguin).
+lays_eggs(eagle).
+lays_eggs(penguin).
+lays_eggs(crocodile).
+has_scales(crocodile).
+has_scales(snake).
+% Rules
+bird(X) :- has_feathers(X), lays_eggs(X).
+reptile(X) :- has_scales(X), lays_eggs(X).
+% Queries (Initialization)
+:- initialization(main).
+main :-
+    ( bird(eagle) -> write('Yes, eagle is a bird.'), nl ; write('No, eagle is not a bird.'), nl ),
+    ( reptile(crocodile) -> write('Yes, crocodile is a reptile.'), nl ; write('No, crocodile is not a reptile.'), nl ).
