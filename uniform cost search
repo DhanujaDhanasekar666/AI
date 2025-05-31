@@ -1,0 +1,25 @@
+import heapq
+graph = {
+    'S': [('A', 1), ('C', 12)],
+    'A': [('B', 3), ('C', 1)],
+    'B': [('D', 3)],
+    'C': [('D', 1), ('G', 2)],
+    'D': [('G', 3)],
+    'G': []
+}
+def uniform_cost_search(start, goal):
+    queue = [(0, start, [start])]
+    visited = set()
+    while queue:
+        cost, current, path = heapq.heappop(queue)
+        if current in visited:
+            continue
+        visited.add(current)
+        if current == goal:
+            print(f"Path found: {' -> '.join(path)} with cost {cost}")
+            return
+        for neighbor, edge_cost in graph[current]:
+            if neighbor not in visited:
+                heapq.heappush(queue, (cost + edge_cost, neighbor, path + [neighbor]))
+    print("Goal not reachable")
+uniform_cost_search('S', 'G')
