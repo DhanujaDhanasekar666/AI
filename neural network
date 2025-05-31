@@ -1,0 +1,24 @@
+import math
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+def sigmoid_derivative(x):
+    return x * (1 - x)
+X = [1, 0, 1, 0]  
+weights_input_hidden = [
+    [0.5, -0.6, 0.2, 0.1],  # weights for neuron 1
+    [-0.3, 0.8, -0.5, 0.4]  # weights for neuron 2
+]
+weights_hidden_output = [0.7, -1.2]  # weights for 2 hidden neurons → 1 output
+bias_hidden = [0.1, -0.1]
+bias_output = 0.05
+def feed_forward(X):
+    hidden_outputs = []
+    for i in range(2):
+        weighted_sum = sum([X[j] * weights_input_hidden[i][j] for j in range(len(X))]) + bias_hidden[i]
+        activation = sigmoid(weighted_sum)
+        hidden_outputs.append(activation)
+    output_sum = sum([hidden_outputs[i] * weights_hidden_output[i] for i in range(2)]) + bias_output
+    output = sigmoid(output_sum)
+    return output
+output = feed_forward(X)
+print("Predicted output:", round(output, 2))
