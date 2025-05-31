@@ -1,0 +1,20 @@
+
+def solve(region_list):
+    if not region_list:
+        return True 
+    region = region_list[0]
+    for color in colors:
+        if is_valid(region, color):
+            color_assignment[region] = color
+            if solve(region_list[1:]):
+                return True
+            del color_assignment[region]  
+
+    return False  
+regions = list(adjacent.keys())
+if solve(regions):
+    print("Solution found:")
+    for region in regions:
+        print(f"{region}: {color_assignment[region]}")
+else:
+    print("No solution found.")
