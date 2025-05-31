@@ -1,0 +1,21 @@
+sample = {
+    "age": "<=30",
+    "income": "high",
+    "student": "no",
+    "credit_rating": "fair"
+}
+def decision_tree_predict(sample):
+    if sample['age'] == '<=30':
+        if sample['student'] == 'yes':
+            return 'yes'
+        else:
+            return 'no'
+    elif sample['age'] == '31...40':
+        return 'yes'
+    else:  # age >40
+        if sample['credit_rating'] == 'excellent':
+            return 'no'
+        else:
+            return 'yes'
+result = decision_tree_predict(sample)
+print("Prediction (buys computer?):", result)
